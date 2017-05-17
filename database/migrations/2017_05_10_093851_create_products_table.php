@@ -20,7 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('price');
             $table->boolean('offer')->default(NULL);
             $table->string('offerPrice');
-            $table->string('location');
+            $table->integer('x');
+            $table->integer('y');
             $table->rememberToken();
             $table->timestamps();
         });

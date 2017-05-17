@@ -9,8 +9,6 @@
 
                 <div class="panel-body">
                     You are logged in!
-                    <a href="create_shoppinglist">Create Shoppinglist</a>
-                    <a href="latest_shoppinglist">Latest Shoppinglist</a>
                 </div>
             </div>
         </div>

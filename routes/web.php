@@ -21,3 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/redirect', 'SocialAuthController@redirect');
 Route::get('/callback', 'SocialAuthController@callback');
+
+Route::get('/create_shoppinglist', function () {
+    return view('createShoppinglist');
+});
+
+Route::get('/latest_shoppinglist', function () {
+    return view('latestShoppinglist');
+});
