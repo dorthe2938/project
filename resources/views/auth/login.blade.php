@@ -58,7 +58,7 @@
                                     Forgot Your Password?
                                 </a>
                                 
-                                <a href="/redirect">FB Login</a>
+                                <a href="redirect">FB Login</a>
                             </div>
                         </div>
                     </form>
