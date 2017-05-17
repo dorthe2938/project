@@ -14,6 +14,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+    <script src='https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/js/jquery.circliful.min.js'></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+    
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -80,10 +86,5 @@
 
         @yield('content')
     </div>
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
