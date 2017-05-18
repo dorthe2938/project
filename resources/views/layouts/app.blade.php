@@ -25,62 +25,77 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    
+    <style>
+        body {
+            background-color: white;
+        }
+        .layoutLogo img {
+            height: 50px;
+            margin: 10px 0px;
+        }
+        
+        .layoutLogoBox {
+            text-align: center;
+        }
+        
+        .navbar-default {
+            background-color: #f39200;
+            border-color: none;
+        }
+        
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: white;
+        }
+        
+        .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+            background-color: #f39200;
+        }
+
+        .navbar-default .navbar-toggle {
+            border-color: #f39200;
+        }
+        
+        .navbar-default .navbar-nav>li>a, .navbar-default .navbar-text {
+            color: white;
+            font-weight: 100;
+        }
+        
+        .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+            border-color: #f39200;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                    
+                    <div class="row">
+                        <div class="col-xs-2">Tilbage</div>
+                        <div class="col-xs-8 layoutLogoBox">
+                            <!-- Branding Image -->
+                            <a class="layoutLogo" href="{{ url('/') }}">
+                                <img src="{{ asset('images/quickTaLogo.png')}}"/>
+                            </a>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="pull-right">
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout
                                 </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
             </div>
         </nav>
 

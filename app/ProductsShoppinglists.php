@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Shoppinglists extends Model
+class ProductsShoppinglists extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,6 +12,6 @@ class Shoppinglists extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'user_id',
+        'product_id', 'shoppingList_id',
     ];
 }

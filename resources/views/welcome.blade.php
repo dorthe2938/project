@@ -25,12 +25,6 @@
                 height: 100vh;
             }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
             .position-ref {
                 position: relative;
             }
@@ -48,10 +42,19 @@
             .title {
                 font-size: 84px;
             }
+            
+            .links {
+                margin-top: 70px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .links img {
+                width: 150px;
+            }
 
             .links > a {
                 color: #636b6f;
-                padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
                 letter-spacing: .1rem;
@@ -62,34 +65,38 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            
+            .topWithLogo {
+                height: 70px;
+                background-color: #f39200;
+                text-align: center;
+            }
+            
+            .topWithLogo img {
+                height: 50px;
+                margin-top: 10px;
+            }
+
+            
         </style>
     </head>
     <body>
+        <div class="topWithLogo">
+            <img src="{{ asset('images/quickTaLogo.png')}}"/>
+        </div>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="links">
                     @if (Auth::check())
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
+                        <a href="{{ url('/login') }}"><img src="{{ asset('images/newUser.png')}}"/></a><br><br><br><br>
+                    
+                        <a href="redirect"><img src="{{ asset('images/facebook.png')}}"/></a><br><br><br><br>
+                    <a href="{{ url('/register') }}">Opret bruger</a>
                     @endif
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
         </div>
     </body>
 </html>
