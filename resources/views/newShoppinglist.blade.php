@@ -1,11 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    
+    .row {
+        margin: 0;
+    }
+    .createShoppinglist h2 {
+        text-align:center;
+    }
+    
+    .createShoppinglist {
+        width: 80%;
+        margin: 100px auto;
+    }
+    
+    .form-control:focus {
+        border-color: #f39200;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(243,146,0,.6);
+    }
+    
+    .btnLogin {
+        color: #fff;
+        background-color: #f39200;
+        width: 100%;
+    }
+    
+</style>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Create shoppinglist</div>
+            <div class="createShoppinglist">
+                <h2>Ny indkøbsliste:</h2>
                 <br />
                 <!-- Display Validation Errors -->
                 @include('common.errors')

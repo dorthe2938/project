@@ -41,15 +41,13 @@
     </div>
     <div class="navbar-fixed-bottom">
          <div type="submit" class="btnTermsAndCond">
-             <a href="create_shoppinglist">
+             <a href="terms_and_conditions">
                  <div class="row">
                      <div class="col-xs-10">Vilkår og betingelser</div>
                      <div class="col-xs-2"><div class="pull-right">></div></div>
                  </div>
              </a>
-             
-         </div>
-                   
+         </div>         
     </div>
 </div>
 @endsection

@@ -37,47 +37,70 @@ Route::get('/new_shoppinglist', function () {
     return view('newShoppinglist'); 
 });
 
-Route::post('/newShoppinglist', function(Request $request, User $user) {
+Route::get('/terms_and_conditions', function () {
+    return view('termsAndConditions'); 
+});
+
+
+Route::get('/create_shoppinglist', function () {
+    return view('createShoppinglist'); 
+});
+
+Route::get('/latest_shoppinglist', function () {
+    return view('latestShoppinglist');
+});
+
+Route::post('/newShoppinglist', function(Request $request) {
     $shoppinglist = new Shoppinglists;
     $shoppinglist->name = $request->shoppinglistName;
     $shoppinglist->user_id = 1;
     $shoppinglist->save();
     
     $insertedId = $shoppinglist->id;
-    $products = Products::orderBy('created_at', 'asc')->get();
     
-    return view('createShoppinglist', compact(['insertedId', 'products']));
+    $shoppinglist = ProductsShoppinglists::where('shoppingLists_id', $insertedId)->get();
+    $products = Products::orderBy('created_at', 'asc')->get();
+        
+        $shoppinglist = ProductsShoppinglists::where('shoppingLists_id', $insertedId)->get();
+        $shoppinglist = $shoppinglist->pluck('product_id');
+        
+        $filteredProducts = $products->whereIn('id', $shoppinglist);
+        
+    
+    return view('createShoppinglist', compact(['insertedId', 'filteredProducts', 'products']));
 });
 
 Route::post('/product', function(Request $request) {
     
-    $products = Products::all();
+    $product = $request->productName;
+    $productId = preg_replace("/[^0-9]/","",$product);
     
-    $productName = $request->productName;
-    
-    if($products->contains($productName)) {
-        
         $add = new ProductsShoppinglists;
-        $add->product_id = $products->id;
+        $add->product_id = $productId;
         $add->shoppingLists_id = $request->shoppinglistId;
         $add->save();
+        
+        $insertedId = $request->shoppinglistId;
+        $products = Products::orderBy('created_at', 'asc')->get();
+        
+        $shoppinglist = ProductsShoppinglists::where('shoppingLists_id', $insertedId)->get();
+        $shoppinglist = $shoppinglist->pluck('product_id');
+        
+        $filteredProducts = $products->whereIn('id', $shoppinglist);
 
-        return redirect('/create_shoppinglist');
-    } else {
-        echo 'error';
-    }
-    
-    
+        return view('createShoppinglist', compact('insertedId', 'filteredProducts', 'products'));
 });
 
-Route::delete('/product/{id}', function($id) {
-    Products::findOrFail($id)->delete();
-
-    return redirect('/create_shoppinglist');
-});
-
-
-
-Route::get('/latest_shoppinglist', function () {
-    return view('latestShoppinglist');
+Route::delete('/product/{id}', function($id, Request $request) {
+    ProductsShoppinglists::where('product_id', $id)->delete();
+    
+    $insertedId = $request->shoppinglistId;
+    $products = Products::orderBy('created_at', 'asc')->get();
+    
+    $shoppinglist = ProductsShoppinglists::where('shoppingLists_id', $insertedId)->get();
+        $shoppinglist = $shoppinglist->pluck('product_id');
+        
+        $filteredProducts = $products->whereIn('id', $shoppinglist);
+    
+    return View('createShoppinglist', compact(['insertedId', 'filteredProducts', 'products']));
 });

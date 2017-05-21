@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
@@ -65,6 +66,11 @@
             border-color: #f39200;
         }
         
+        .logud a .glyphicon {
+            color: white;
+            font-size: 30px;
+            font-weight: 100;
+        }
     </style>
 </head>
 <body>
@@ -82,12 +88,12 @@
                             </a>
                         </div>
                         <div class="col-xs-2">
-                            <div class="pull-right">
-                                <a href="{{ route('logout') }}"
+                            <div class="pull-right logud">
+                                <p><a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+                                              <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                                    </a></p>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
