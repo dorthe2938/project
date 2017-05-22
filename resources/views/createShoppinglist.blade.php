@@ -8,11 +8,12 @@
     }
     .createShoppinglist h2 {
         text-align:center;
+        font-size: 27px;
     }
     
     .createShoppinglist {
         width: 80%;
-        margin: 50px auto;
+        margin: 30px auto;
     }
     
     .form-control:focus {
@@ -30,18 +31,48 @@
         color: #fff;
         background-color: #f39200;
         width: 100%;
+        margin-bottom: 50px;
     }
     
-    .btnHomePage a {
+    .panel-body a {
         color: #fff;
         font-size: 20px;
+    }
+    
+    .btnTermsAndCond {
+        color: #fff;
+        background-color: #f39200;
+        width: 100%;
+    }
+    
+    .navbar-fixed-bottom a{
+        color: #fff;
+        font-size: 20px;
+    }
+    
+    .btnTermsAndCond {
+        padding: 5px;
+    }
+    
+    .btnAdd {
+        color: #fff;
+        background-color: #f39200;
+        width: 100%;
+    }
+    
+    .panel-body {
+        padding: 0px;
+    }
+    
+    .btn-group {
+        width: 48%;
     }
 </style>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="createShoppinglist">
-                <h2>Lav shoppingliste</h2>
+                <h2>Lav indkøbslisteliste</h2>
                 <br />
                 <!-- Display Validation Errors -->
                 @include('common.errors')
@@ -53,7 +84,7 @@
 
                     <!-- Task Name -->
                     <div class="form-group">
-                        <label for="task" class="col-sm-3 control-label">Product</label>
+                        <label for="task" class="col-sm-3 control-label">Produkt</label>
 
                         <div class="col-sm-6">
                             <input type="hidden" name="shoppinglistId" value="{{ $insertedId }}">
@@ -69,7 +100,7 @@
                     <!-- Add Task Button -->
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-6">
-                            <button type="submit" class="btn btn-default">
+                            <button type="submit" class="btn btnAdd">
                                 <i class="fa fa-plus"></i> Tilføj Produkt
                             </button>
                         </div>
@@ -88,9 +119,9 @@
 
                                 <!-- Table Headings -->
                                 <thead>
-                                    <th>Product</th>
-                                    <th>Brand</th>
-                                    <th>Price</th>
+                                <th></th>
+                                    <th>Produkt</th>
+                                    <th>Pris</th>
                                     <th>&nbsp;</th>
                                 </thead>
 
@@ -98,20 +129,17 @@
                                 <tbody>
                                     @foreach ($filteredProducts as $product)
                                                 <tr>
-                                                <!-- Task Name -->
+                                                    <td><input type="checkbox"></td>
                                                 <td class="table-text">
-                                                    <div>{{ $product->name }}</div>
-                                                </td>
-                                                <td class="table-text">
-                                                    <div>{{ $product->brand }}</div>
+                                                    <div>{{ $product->brand }} {{ $product->name }}</div>
                                                 </td>
                                                 <td class="table-text">
                                                     <div>
                                                     @if($product->offer == 1)
-                                                    {{ $product->price - $product->offerPrice }}<br />
-                                                    <small><strike>{{ $product->price }}</strike></small>
+                                                    Tilbud:<br /> {{ $product->price - $product->offerPrice }} DKK<br />
+                                                    <small><strike>{{ $product->price }} DKK</strike></small>
                                                     @else
-                                                    {{ $product->price }}
+                                                    {{ $product->price }} DKK
                                                     @endif
                                                     </div>
                                                 </td>
@@ -129,13 +157,14 @@
                                                 </tr>
                                     @endforeach
                                     <tr>
-                                        <td><strong>Pris total:</strong></td>
                                         <td></td>
+                                        <td><strong>Pris total:</strong></td>
                                         <td>
                                             <strong>
                                             {{ $filteredProducts->sum('price') - $filteredProducts->sum('offerPrice') }}
                                             </strong>
                                         </td>
+                                        <td></td>
                                         <td></td>
                                     </tr>
                                 </tbody>
@@ -143,8 +172,27 @@
                         </div>
                     </div>
                 @endif
-            <div class="panel-body"><button class="btn btnHomePage"><a href="latest_shoppinglist">Se rute</a></button></div>
+            <div class="panel-body">
+                <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <a href="latest_shoppinglist"><button class="btn btnHomePage">Se rute</button></a>
+                    </div>
+                    <div class="btn-group">
+                        <a href="#"><button class="btn btnHomePage">Del listen</button></a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="navbar-fixed-bottom">
+         <a href="home">
+             <div type="submit" class="btnTermsAndCond">
+                 <div class="row">
+                     <div class="col-xs-2"><</div>
+                     <div class="pull-right col-xs-10">Tilbage</div>
+                 </div>
+            </div>
+         </a>
     </div>
 </div>
 @endsection

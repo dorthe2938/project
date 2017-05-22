@@ -10,13 +10,18 @@
         width: 80%;
         margin: 0 auto;
     }
+    
+    .homePage h2 {
+        text-align: center;
+    }
+    
     .btnHomePage, .btnTermsAndCond {
         color: #fff;
         background-color: #f39200;
         width: 100%;
     }
     
-    .btnHomePage a, .btnTermsAndCond a{
+    .panel-body a, .btnTermsAndCond a{
         color: #fff;
         font-size: 20px;
     }
@@ -31,10 +36,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="homePage">
-
+                <h2>Menu</h2>
                 <div class="panel-body">
-                    <button type="submit" class="btn btnHomePage"><a href="new_shoppinglist">Ny indkøbsliste</a></button>
-                    
+                    <a href="new_shoppinglist"><button type="submit" class="btn btnHomePage">Ny indkøbsliste</button></a>
+                </div>
+                <div class="panel-body">
+                    <a href="#"><button type="submit" class="btn btnHomePage">Seneste indkøbsliste</button></a>
+                </div>
+                <div class="panel-body">
+                    <a href="#"><button type="submit" class="btn btnHomePage">Se alle dine indkøbslister</button></a>
                 </div>
             </div>
         </div>

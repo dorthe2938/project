@@ -90,9 +90,10 @@
                     @if (Auth::check())
                         <a href="{{ url('/home') }}">Home</a>
                     @else
+                        <a href="redirect"><img src="{{ asset('images/facebook.png')}}"/></a><br><br><br><br>
+                        
                         <a href="{{ url('/login') }}"><img src="{{ asset('images/newUser.png')}}"/></a><br><br><br><br>
                     
-                        <a href="redirect"><img src="{{ asset('images/facebook.png')}}"/></a><br><br><br><br>
                     <a href="{{ url('/register') }}">Opret bruger</a>
                     @endif
                 </div>

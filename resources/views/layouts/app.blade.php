@@ -70,6 +70,7 @@
             color: white;
             font-size: 30px;
             font-weight: 100;
+            margin-top: 17px;
         }
     </style>
 </head>
@@ -80,7 +81,7 @@
                 <div class="navbar-header">
                     
                     <div class="row">
-                        <div class="col-xs-2">Tilbage</div>
+                        <div class="col-xs-2"></div>
                         <div class="col-xs-8 layoutLogoBox">
                             <!-- Branding Image -->
                             <a class="layoutLogo" href="{{ url('/') }}">

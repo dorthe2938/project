@@ -26,6 +26,27 @@
         width: 100%;
     }
     
+    .btnTermsAndCond {
+        color: #fff;
+        background-color: #f39200;
+        width: 100%;
+    }
+    
+    .btnTermsAndCond a{
+        color: #fff;
+        font-size: 20px;
+    }
+    
+    .btnTermsAndCond {
+        padding: 5px;
+    }
+    
+    .btnNew {
+        color: #fff;
+        background-color: #f39200;
+        width: 100%;
+    }
+    
 </style>
 
 <div class="container">
@@ -42,7 +63,7 @@
                     {{ csrf_field() }}
                     
                     <div class="form-group">
-                        <label for="shoppinglistName" class="col-sm-3 control-label">Shoppinglist name</label>
+                        <label for="shoppinglistName" class="col-sm-3 control-label">Navn på indkøbsliste</label>
 
                         <div class="col-sm-6">
                             <input type="text" name="shoppinglistName" id="shoppinglist-name" class="form-control">
@@ -52,14 +73,24 @@
                     <!-- Add Shoppinglist Button -->
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-6">
-                            <button type="submit" class="btn btn-default">
-                                <i class="fa fa-plus"></i> Add Shoppinglist
+                            <button type="submit" class="btn btnNew">
+                                <i class="fa fa-plus"></i> Tilføj ny indkøbsliste
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+    </div>
+    <div class="navbar-fixed-bottom">
+         <div type="submit" class="btnTermsAndCond">
+             <a href="home">
+                 <div class="row">
+                     <div class="col-xs-2"><</div>
+                     <div class="pull-right col-xs-10">Tilbage</div>
+                 </div>
+             </a>
+         </div>         
     </div>
 </div>
 @endsection

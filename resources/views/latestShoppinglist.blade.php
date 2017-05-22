@@ -38,7 +38,7 @@
         width: 100%;
     }
     
-    .btnHomePage a {
+    .panel-body a {
         color: #fff;
         font-size: 20px;
     }
@@ -61,7 +61,7 @@
                     </div>
                     
                     <div class="doneWithMap">
-                        <div class="panel-body"><button class="btn btnHomePage"><a href="home">Færdig</a></button></div>
+                        <div class="panel-body"><a href="home"><button class="btn btnHomePage">Færdig</button></a></div>
                     </div>
                 </div>
             </div>
